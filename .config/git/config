@@ -1,0 +1,11 @@
+[user]
+        name = FumihikoHata
+        email = hatappo@users.noreply.github.com
+[init]
+        defaultBranch = main
+[pull]
+        ff = only
+[merge]
+        ff = false
+# [url "git@github.com:"]
+#         insteadOf = https://github.com/
