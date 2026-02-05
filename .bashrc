@@ -120,7 +120,10 @@ source /google/devshell/bashrc.google
 
 
 
-# zsh に切り替える。
-if [ -x "$(command -v zsh)" ]; then
-  exec zsh
+# zsh をインストールして切り替える。
+if ! command -v zsh &>/dev/null; then
+  sudo apt-get update -qq && sudo apt-get install -yqq zsh 2>/dev/null
+fi
+if command -v zsh &>/dev/null && [ -z "$ZSH_VERSION" ]; then
+  exec zsh -l
 fi
