@@ -39,8 +39,15 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 
 
-alias yadm-reset='yadm fetch && yadm reset --hard origin/main'
+my-backward-kill-word() {
+  local WORDCHARS='*?[]-~=&;:!#$%^(){}<>'
+  zle -f kill
+  zle backward-kill-word
+}
+zle -N my-backward-kill-word
+bindkey '^W' my-backward-kill-word
 
+alias yadm-reset='yadm fetch && yadm reset --hard origin/main'
 yadm-checkout() {
   yadm checkout -- "$1"
 }
