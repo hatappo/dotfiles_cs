@@ -1,6 +1,12 @@
 #!/bin/bash
 
+#
+# この .customize_environment ファイルの初期化処理はバックグラウンドプロセスで非同期で走る。
+# そのため zsh のインストールなどはここではなく .bashrc 側で行う。
+# ここでは重ためのツールの非同期インストールなどを行う。
+#
+
 if ! command -v yadm &> /dev/null; then
   apt-get update
-  apt-get install -y yadm zsh
+  apt-get install -y yadm
 fi
